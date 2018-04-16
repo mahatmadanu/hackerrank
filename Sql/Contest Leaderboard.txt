@@ -1,0 +1,1 @@
+SELECT hacker_id hid, name, sum(a) sa from (select s.hacker_id,h.name,max(s.score) a from Submissions s inner join hackers h on h.hacker_id=s.hacker_id where s.score !=0 group by s.hacker_id,h.name,s.challenge_id) group by hacker_id,name order by sa desc, hid;
