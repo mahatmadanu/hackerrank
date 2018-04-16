@@ -1,0 +1,1 @@
+SELECT N, CASE when p is null then 'Root' when EXISTS (SELECT p FROM BST temp where temp.p = a.n) then 'Inner' else 'Leaf' END FROM BST A ORDER BY N;
