@@ -1,0 +1,2 @@
+SELECT doctor, professor, singer, actor from (SELECT * FROM(SELECT name c_name, occupation c_occupation, ROW_NUMBER() OVER (PARTITION BY occupation ORDER BY name) c_rownum FROM occupations ORDER BY name)
+PIVOT( MAX(c_name) FOR c_occupation IN ('Doctor' as doctor, 'Professor' as professor, 'Singer' as singer, 'Actor' as actor)) order by c_rownum);
